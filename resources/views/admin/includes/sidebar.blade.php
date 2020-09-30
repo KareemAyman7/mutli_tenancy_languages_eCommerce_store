@@ -24,16 +24,19 @@
 
 
             <li class="nav-item"><a href=""><i class="la la-group"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>
+                    <span class="menu-title" data-i18n="nav.dash.main"> {{__('admin\sidebar.main_categories')}} </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2"></span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Category::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    <li class="active"><a class="menu-item" href="{{route('admin.maincategories')}}"
+                                          data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show_all_cats')}} </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                             قسم جديد </a>
+                    <!--<li><a class="menu-item" href="{{route('admin.subcategories')}}"
+                     data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show_all_subcats')}} </a>
+                     </li>-->
+                    <li><a class="menu-item" href="{{route('admin.maincategories.create')}}" data-i18n="nav.dash.crypto">
+                     {{__('admin\sidebar.add_new_cat')}} </a>
                     </li>
                 </ul>
             </li>
