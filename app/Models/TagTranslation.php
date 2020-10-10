@@ -4,11 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BrandTranslation extends Model
+class TagTranslation extends Model
 {
-    protected $fillable = ['name'];
-
+    protected $guarded = [];
     public $timestamps = false;
-
-
 }
