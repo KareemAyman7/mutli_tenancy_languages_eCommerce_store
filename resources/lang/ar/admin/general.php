@@ -10,6 +10,7 @@ return [
     'unique_validate' => 'هذه البيانات موجوده بالفعل',
     'same_validate' => 'كلمة السر وتأكيد كلمة السر يجب ان تكون متطابقة',
     'min_validate' => 'عدد الاحرف يجب ان لا تقل عن ',
+    'mimes_photo_validate' => 'يجب اختيار صورة',
     'current_pass_validate' => 'هذه ليست كلمة المرور الحالية',
     'isActive' => 'مفعل',
     'isNotActive' => 'غير مفعل',

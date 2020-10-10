@@ -42,16 +42,15 @@
             </li>
 
             <li class="nav-item"><a href=""><i class="la la-group"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعية   </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">  {{__('admin\sidebar.brands')}}   </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">400</span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Brand::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    <li class="active"><a class="menu-item" href="{{route('admin.brands')}}"
+                                          data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.allbrands')}} </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                            قسم فرعي جديد </a>
+                    <li><a class="menu-item" href="{{route('admin.brands.create')}}" data-i18n="nav.dash.crypto">  {{__('admin\sidebar.add_brand')}} </a>
                     </li>
                 </ul>
             </li>
