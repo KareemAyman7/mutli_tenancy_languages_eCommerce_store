@@ -10,6 +10,7 @@ return [
     'unique_validate' => 'This data already exist',
     'same_validate' => 'The password and confirm password must be the same',
     'min_validate' => 'Number of characters must not be less than ',
+    'mimes_photo_validate' => 'You should choose photo',
     'current_pass_validate' => 'Current password is incorrect',
     'isActive' => 'Active',
     'isNotActive' => 'Not Active',

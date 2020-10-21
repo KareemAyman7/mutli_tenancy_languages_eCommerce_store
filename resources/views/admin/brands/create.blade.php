@@ -11,9 +11,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('admin\sidebar.home')}} </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.maincategories')}}"> {{__('admin\sidebar.main_categories')}} </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.brands')}}"> {{__('admin\sidebar.brands')}} </a>
                                 </li>
-                                <li class="breadcrumb-item active">  {{__('admin\categories.add_main_categories')}}
+                                <li class="breadcrumb-item active">  {{__('admin\brands.add_brand')}}
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> {{__('admin\categories.add_main_categories')}} </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> {{__('admin\brands.add_brand')}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,7 +44,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.maincategories.store')}}"
+                                              action="{{route('admin.brands.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
@@ -52,7 +52,7 @@
 
 
                                             <div class="form-group">
-                                                <label> {{__('admin\categories.form_photo')}} </label>
+                                                <label> {{__('admin\brands.form_photo')}} </label>
                                                 <label id="projectinput7" class="file center-block">
                                                     <input type="file" id="file" name="photo">
                                                     <span class="file-custom"></span>
@@ -64,11 +64,11 @@
 
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i> {{__('admin\categories.cat_details')}} </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> {{__('admin\brands.brand_details')}} </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> {{__('admin\categories.form_name')}} 
+                                                            <label for="projectinput1"> {{__('admin\brands.form_name')}} 
                                                                  </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -82,41 +82,6 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> {{__('admin\categories.form_name_link')}} 
-                                                            </label>
-                                                            <input type="text" id="name"
-                                                                   class="form-control"
-                                                                   placeholder="  "
-                                                                   value="{{old('slug')}}"
-                                                                   name="slug">
-                                                            @error("slug")
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> {{__('admin\categories.form_follow')}} 
-                                                            </label>
-                                                            <select class="form-control" name="follow" id="">
-                                                                <option value="" style="font-weight: 700">{{__('admin\categories.form_follow_nothing')}}</option>
-                                                                @if(count($categories) > 0)
-                                                                    @each('admin.categories.diplay_subcats', $categories, 'category', 'admin.categories.cats_none')
-                                                                @else
-                                                                    @include('admin.categories.cats_none')
-                                                                @endif
-                                                            </select>
-                                                            @error("follow")
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
                                                         <div class="form-group mt-1 pt-1">
                                                             <input type="checkbox" value="1"
                                                                    name="is_active"
@@ -124,14 +89,16 @@
                                                                    class="switchery" data-color="success"
                                                                   checked />
                                                             <label for="switcheryColor4"
-                                                                   class="card-title ml-1">{{__('admin\categories.form_status')}}  </label>
+                                                                   class="card-title ml-1">{{__('admin\brands.form_status')}}  </label>
 
                                                             @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    
                                                 </div>
+
                                             </div>
 
 

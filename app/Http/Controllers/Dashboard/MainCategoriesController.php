@@ -10,6 +10,10 @@ use DB;
 
 class MainCategoriesController extends Controller
 {
+
+    private $cats_organized = [];
+    private $counter = 0;
+
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +21,10 @@ class MainCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::parent() -> get();
-        foreach ($categories as $key => $cat) {
-            $cat['subcats'] = $cat -> subcats() -> get();
-        }
-        //return $categories;
-
-        //$categories = Category::parent() -> get(); //-> paginate(PAGINATION_COUNT);
-        //$categories = Category::all();
+        $test = 0;
+        $this->cats_organized = Category::parent() -> get();
+        $this->getsubcats($this->cats_organized, $test);
+        $categories = $this->cats_organized;
         return view('admin.categories.index', compact('categories'));
     }
     
@@ -42,17 +42,29 @@ class MainCategoriesController extends Controller
      */
     public function create()
     {
-        //$name = $request->input('name', false);
-        $categories = Category::parent() -> get();
-        /*$cats_organized = [];
-        $all_checked = [];
-        foreach ($categories as $key => $value) {
-            array_push($cats_organized, $value);
-            $cats_organized[$key]['subs'] = [['name' => 'kareem'], ['name' => 'mohamed']];
-        }
-        return $cats_organized;*/
+        $test = 0;
+        $this->cats_organized = Category::parent() -> get();
+        $this->getsubcats($this->cats_organized, $test);
+        $categories = $this->cats_organized;
         return view('admin.categories.create', compact('categories'));
     }
+
+    public function getsubcats($allcats, $test){
+        
+        foreach ($allcats as $key => $cat) {
+            if($cat->parent_id != null){
+                $cat['depth'] = $test+1;
+                $test++;
+            }else{
+                $cat['depth'] = 0;
+                $test = 0;
+            }
+            $cat['subcats'] = $cat -> subcats() -> get();
+            $this->getsubcats($cat['subcats'], $test);
+            $test--;
+        }
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -63,7 +75,7 @@ class MainCategoriesController extends Controller
     public function store(MainCategoriesRequest $request)
     {
         // validation
-        //return $request;
+        // return $request;
         // update db
         try {
 
