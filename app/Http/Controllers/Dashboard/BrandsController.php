@@ -126,7 +126,7 @@ class BrandsController extends Controller
 
             $brand = Brand::find($id);
             if(! $brand)
-                return redirect()->route('admin.maincategories')->with(['error' => __('admin\general.error')]);
+                return redirect()->route('admin.brands')->with(['error' => __('admin\general.error')]);
 
             
             DB::beginTransaction();

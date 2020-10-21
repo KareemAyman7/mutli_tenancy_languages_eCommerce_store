@@ -6,13 +6,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title"> {{__('admin\sidebar.main_categories')}} </h3>
+                    <h3 class="content-header-title"> {{__('admin\sidebar.brands')}} </h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('admin\sidebar.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active"> {{__('admin\sidebar.main_categories')}}
+                                <li class="breadcrumb-item active"> {{__('admin\sidebar.brands')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">{{__('admin\categories.all_main_categories')}} </h4>
+                                    <h4 class="card-title">{{__('admin\brands.all_brands')}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -48,18 +48,32 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal">
                                             <thead class="">
                                             <tr>
-                                                <th>{{__('admin\categories.table_name')}} </th>
-                                                <th>{{__('admin\categories.table_type')}}</th>
-                                                <th>{{__('admin\categories.table_name_link')}}</th>
-                                                <th>{{__('admin\categories.table_status')}}</th>
-                                                <th>{{__('admin\categories.table_photo')}}</th>
-                                                <th>{{__('admin\categories.table_action')}}</th>
+                                                <th>{{__('admin\tags.table_name')}} </th>
+                                                <th>{{__('admin\tags.table_name_link')}}</th>
+                                                <th>{{__('admin\tags.table_action')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($categories)
-                                                @each('admin.categories.subcats_index', $categories, 'category')
+                                            @isset($tags)
+                                                @foreach($tags as $tag)
+                                                    <tr>
+                                                        <td>{{$tag -> name}}</td>
+                                                        <td>{{$tag -> slug}}</td>
+                                                        <td>
+                                                            <div class="btn-group" role="group"
+                                                                 aria-label="Basic example">
+                                                                <a href="{{route('admin.tags.edit',$tag -> id)}}"
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin\general.edit_action')}}</a>
+
+
+                                                                <a href="{{route('admin.tags.delete',$tag -> id)}}"
+                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin\general.delete_action')}}</a>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             @endisset
 
 
